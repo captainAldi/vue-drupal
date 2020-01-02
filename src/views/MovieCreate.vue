@@ -79,7 +79,7 @@ export default {
 	name: 'movieCreate',
 	data: function() {
 		return {
-			url: 'http://103.197.92.147/node?_format=hal_json',
+			url: 'https://103.197.92.147/node?_format=hal_json',
 			isLoading: false,
 			dialog: false,
 			movieObject: {

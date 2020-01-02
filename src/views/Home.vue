@@ -251,7 +251,7 @@ export default {
 				isLoading: false,
 				dialog: false,
 				filteredSingleMovie: [],
-				url: 'http://103.197.92.147/node/'
+				url: 'https://103.197.92.147/node/'
 			}
 		},
 		computed: {
