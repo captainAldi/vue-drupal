@@ -89,7 +89,7 @@ export default {
 	name: 'movieEdit',
 	data: function() {
 		return {
-			url: 'http://drupal-vue.dd:8083/node/',
+			url: 'https://103.197.92.147/node/',
 			isLoading: false,
 			dialog: false,
 			movieObject: {}
@@ -133,7 +133,7 @@ export default {
 				let formDataMovie = {
 					"_links": {
 						"type": {
-							"href": "http://drupal-vue.dd:8083/rest/type/node/movies"
+							"href": "https://103.197.92.147rest/type/node/movies"
 						}
 					},
 					"title": [

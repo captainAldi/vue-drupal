@@ -79,7 +79,7 @@ export default {
 	name: 'movieCreate',
 	data: function() {
 		return {
-			url: 'http://drupal-vue.dd:8083/node?_format=hal_json',
+			url: 'https://103.197.92.147/node?_format=hal_json',
 			isLoading: false,
 			dialog: false,
 			movieObject: {
@@ -99,7 +99,7 @@ export default {
 				let formDataMovie = {
 					"_links": {
 						"type": {
-							"href": "http://drupal-vue.dd:8083/rest/type/node/movies"
+							"href": "https://103.197.92.147rest/type/node/movies"
 						}
 					},
 					"title": [
