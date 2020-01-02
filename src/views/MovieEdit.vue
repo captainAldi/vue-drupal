@@ -52,7 +52,6 @@
 			</v-list>
 
 			<h1>ini edit</h1>
-			{{filteredSingleMovie[0].title[0].value}}
 			
 			<v-row>
 				<v-col
@@ -60,7 +59,7 @@
 				>
 					<v-form>
 						<v-text-field
-							v-model="filteredSingleMovie[0].title[0].value"
+							v-model="movieObject[0].title[0].value"
 							solo
 							label="Title"
 							append-icon="mdi-movie-edit"
@@ -68,7 +67,7 @@
 
 						<v-textarea
 							solo
-							v-model="filteredSingleMovie[0].body[0].value"
+							v-model="movieObject[0].title[0].value"
 							label="Solo textarea"
 						></v-textarea>
 
@@ -93,10 +92,15 @@ export default {
 			url: 'http://drupal-vue.dd:8083/node/',
 			isLoading: false,
 			dialog: false,
+			movieObject: {}
 		}
 	},
 	created() {
 		this.fetchMoviesData()
+		
+		if(this.filteredSingleMovie.length) {
+			this.setMovieObject()
+		}
 	},
 	computed: {
 		...mapGetters({
@@ -119,6 +123,10 @@ export default {
 			this.$router.push('/')
 		},
 
+		setMovieObject() {
+			this.movieObject = this.filteredSingleMovie
+		},
+
 		async editMovie() {
 			this.isLoading = true
 
@@ -130,12 +138,12 @@ export default {
 					},
 					"title": [
 						{
-							"value": this.filteredSingleMovie[0].title[0].value
+							"value": this.movieObject[0].title[0].value
 						}
 					],
 					"body": [
 						{
-							"value": this.filteredSingleMovie[0].body[0].value
+							"value": this.movieObject[0].title[0].value
 						}
 					]
 				}
@@ -158,8 +166,8 @@ export default {
 		},
 
 		clearForm() {
-			this.movieObject.title = ''
-			this.movieObject.body = ''
+			this.movieObject[0].title[0].value = ''
+			this.movieObject[0].title[0].value = ''
 		},
 
 		closeDialog() {

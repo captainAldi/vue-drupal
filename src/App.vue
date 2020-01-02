@@ -35,6 +35,7 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
+
     </v-app-bar>
 
     <v-content>
@@ -42,6 +43,26 @@
 							<router-view />
 						</v-slide-x-transition>
     </v-content>
+
+				<div>
+					<v-snackbar
+						v-if="dataErrorStatus.toServer"
+						v-model="dataErrorStatus.toServer"
+						color="error"
+						:timeout=0
+					>
+						{{dataErrorStatus.message}}
+					</v-snackbar>
+
+					<v-snackbar
+						v-if="dataErrorStatus.toInternet"
+						v-model="dataErrorStatus.toInternet"
+						color="error"
+						:timeout=0
+					>
+						{{dataErrorStatus.message}}
+					</v-snackbar>
+				</div>
 
 				<v-bottom-navigation
 					:value="activeBtn"
@@ -68,6 +89,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -82,7 +104,22 @@ export default {
 			}
 		},
 
+	created() {
+			this.fetchMoviesData()
+		},
+
+		computed: {
+			...mapGetters({
+				listMovies: 'movies/listMovies',
+				dataErrorStatus: 'movies/dataErrorStatus'
+			}),
+		},
+
 		methods: {
+			...mapActions({
+				fetchMoviesData: 'movies/fetchDatas'
+			}),
+
 			goToListMovie() {
 				this.activeBtn = 0
 

@@ -107,8 +107,19 @@
 				</v-col>
 			</v-row>
 	
+		<div
+			v-if="!listMovies.length"
+		>
+			<v-skeleton-loader
+				ref="skeleton"
+				type="list-item-avatar-three-line"
+				class="mx-auto"
+				v-for="n in 3"
+				:key="n"
+			></v-skeleton-loader>
+		</div>
 
-			<v-list v-if="!filteredMovies.length"><h1>Tidak Ditemukan</h1></v-list>
+			<v-list v-else-if="!filteredMovies.length"><h1>Tidak Ditemukan</h1></v-list>
 
 			<v-list
 				v-for="movie in filteredMovies"
@@ -225,7 +236,7 @@
 
 <script>
 import axios from 'axios'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -243,12 +254,10 @@ export default {
 				url: 'http://drupal-vue.dd:8083/node/'
 			}
 		},
-		created() {
-			this.fetchMoviesData()
-		},
 		computed: {
 			...mapGetters({
-				listMovies: 'movies/listMovies'
+				listMovies: 'movies/listMovies',
+				dataErrorStatus: 'movies/dataErrorStatus'
 			}),
 			// filteredMoviesTitle() {
 			// 	let searchTitleLow = this.searchTitle.toLowerCase()
@@ -279,9 +288,6 @@ export default {
 			}
 		},
 		methods: {
-			...mapActions({
-				fetchMoviesData: 'movies/fetchDatas'
-			}),
 			clearFilter() {
 				this.searchTitle = ''
 				this.searchGenre = 'All'
