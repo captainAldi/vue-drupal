@@ -89,7 +89,7 @@ export default {
 	name: 'movieEdit',
 	data: function() {
 		return {
-			url: 'https://103.197.92.147/node/',
+			url: 'http://103.197.92.147/node/',
 			isLoading: false,
 			dialog: false,
 			movieObject: {}
@@ -133,7 +133,7 @@ export default {
 				let formDataMovie = {
 					"_links": {
 						"type": {
-							"href": "https://103.197.92.147rest/type/node/movies"
+							"href": "http://103.197.92.147rest/type/node/movies"
 						}
 					},
 					"title": [

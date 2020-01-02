@@ -251,7 +251,7 @@ export default {
 				isLoading: false,
 				dialog: false,
 				filteredSingleMovie: [],
-				url: 'http://drupal-vue.dd:8083/node/'
+				url: 'http://103.197.92.147/node/'
 			}
 		},
 		computed: {

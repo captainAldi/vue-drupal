@@ -1,7 +1,7 @@
 import Axios from "axios"
 
 
-const url = 'https://103.197.92.147/api/movies'
+const url = 'http://103.197.92.147/api/movies'
 
 export default {
 	namespaced: true,
